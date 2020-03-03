@@ -59,12 +59,13 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
   
-  def self.find_by(attribute)
+  def self.find_by(attribute) #hash (name is irrelevant)
     key = attribute.keys[0]
     value = attribute.values[0]
     
     sql = "SELECT * FROM #{self.table_name} WHERE #{key} = ?"
-    DB[:conn].execute(sql, value)
+    
+    DB[:conn].execute(sql, value) #here value replaces the question mark 
   end
   
 end
